@@ -29,4 +29,14 @@ source .venv/bin/activate
 ### 6. Install Dependencies
 pip install -r requirements.txt
 
-Your environment is now ready to run the automation tests.
+### 7. Run the Tests Locally
+To run the automation scripts, simply execute:
+pytest
+
+### 8. Run Tests via GitHub Actions
+- Visit the workflow file to trigger or check GitHub Actions:
+https://github.com/moizam/automationexercise-playwright-tests/actions/workflows/main.yml
+- See the test results published here:
+https://moizam.github.io/gh-pages/
+
+Your environment is now ready to run the automation tests both locally and on GitHub Actions.
