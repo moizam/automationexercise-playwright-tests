@@ -1,0 +1,15 @@
+.venv
+.idea
+.pytest_cache
+.git
+videos
+.env
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore pytest cache
+.pytest_cache/
+
+allure-results
+allure-report
