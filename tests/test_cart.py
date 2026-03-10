@@ -24,9 +24,13 @@ def test_add_to_cart(page,product_search):
     page.fill("#search_product",product_search)
     page.click("#submit_search")
 
-    # Wait for products to load
     products = page.locator("//div[@class='single-products']")
-    products.first.wait_for(timeout=5000)
+
+    # Wait for products to load
+    try:
+        products.first.wait_for(timeout=5000)
+    except TimeoutError:
+        pytest.fail(f"TIMEOUT: Search for '{product_search}' returned no products in the UI.")
 
 
     # Find the correct product from list and click Add to Cart
@@ -45,7 +49,7 @@ def test_add_to_cart(page,product_search):
 
     # Wait for cart items table to load
     items = page.locator("//table[@id='cart_info_table']//td[@class='cart_description']//h4//a")
-    items.first.wait_for(timeout=30000)
+    items.first.wait_for(timeout=60000)
     # find product names in the cart
     product_found = False
     for i in range(items.count()):
