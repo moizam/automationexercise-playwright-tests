@@ -26,12 +26,8 @@ def test_add_to_cart(page,product_search):
 
     products = page.locator("//div[@class='single-products']")
 
-    # Wait for products to load
-    try:
-        products.first.wait_for(timeout=5000)
-    except TimeoutError:
-        pytest.fail(f"TIMEOUT: Search for '{product_search}' returned no products in the UI.")
 
+    expect(products.first).to_be_visible(timeout=5000)
 
     # Find the correct product from list and click Add to Cart
     product_found = False
@@ -59,6 +55,3 @@ def test_add_to_cart(page,product_search):
 
     # Assert product is in cart
     assert product_found, f"Product '{product_search}' not found in cart!"
-
-
-
